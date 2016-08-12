@@ -37,6 +37,7 @@ class Main {
    */
   public function setup_hooks() {
 
+    add_action( 'gform_after_submission_1', array( Modify_Form\Modify_Form::instance(), 'save_added_fields' ) );
 
   }
 
@@ -48,7 +49,7 @@ class Main {
   public function setup_filters() {
 
     // uncomment to have form variable dumped for testing
-    // add_filter( 'gform_pre_render_1', function( $form ) { var_dump( $form['fields'] ); } );
+    //add_filter( 'gform_pre_render_1', function( $form ) { var_dump( $form['fields'] ); } );
 
     add_filter( 'gform_pre_render_1', array( Modify_Form\Modify_Form::instance(), 'download_id_insert' ) );
     add_filter( 'gform_pre_render_1', array( Modify_Form\Modify_Form::instance(), 'download_title_insert' ) );

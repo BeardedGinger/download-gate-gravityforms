@@ -44,14 +44,7 @@ class Modify_Form {
    */
   public function download_id_insert( $form ) {
 
-    $properties = array(
-      'type'          => 'hidden',
-      'defaultValue'  => $this->get_download_page_id(),
-      'id'        => apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 )
-    );
-
-    $hidden_field = \GF_Fields::create( $properties );
-    $form['fields'][] = $hidden_field;
+    $form['fields'][] = $this->create_hidden_id();
 
     return $form;
 
@@ -65,6 +58,38 @@ class Modify_Form {
    */
   public function download_title_insert( $form ) {
 
+    $form['fields'][] = $this->create_hidden_title();
+
+    return $form;
+
+  }
+
+  /**
+   * Create hidden id field
+   *
+   * @since     0.1.0
+   */
+  public function create_hidden_id() {
+
+    $properties = array(
+      'type'          => 'hidden',
+      'defaultValue'  => $this->get_download_page_id(),
+      'id'            => apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 )
+    );
+
+    $hidden_field = \GF_Fields::create( $properties );
+
+    return $hidden_field;
+
+  }
+
+  /**
+   * Create hidden title field
+   *
+   * @since     0.1.0
+   */
+  public function create_hidden_title() {
+
     $properties = array(
       'type'          => 'hidden',
       'defaultValue'  => $this->get_download_page_title(),
@@ -72,10 +97,8 @@ class Modify_Form {
     );
 
     $hidden_field = \GF_Fields::create( $properties );
-    $form['fields'][] = $hidden_field;
 
-    return $form;
-
+    return $hidden_field;
   }
 
   /**
@@ -104,6 +127,19 @@ class Modify_Form {
 
     return apply_filters( 'lc_gforms_dm_inserted_page_title', $download_page_title );
 
+  }
+
+  /**
+   * Save the values of these added fields to the lead when a
+   * user submits the form
+   *
+   * @since    0.1.0
+   */
+  public function save_added_fields( $lead ) {
+
+    $save = \GFFormsModel::save_input( \GFAPI::get_form(1), $this->create_hidden_id(), $lead, \GFFormsModel::get_current_lead(), 101 );
+
+    return $save;
   }
 
 }
