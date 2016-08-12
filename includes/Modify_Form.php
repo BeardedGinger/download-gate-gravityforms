@@ -45,8 +45,9 @@ class Modify_Form {
   public function download_id_insert( $form ) {
 
     $properties = array(
-      'type' => 'hidden',
-      'defaultValue' => $this->get_download_page_id()
+      'type'          => 'hidden',
+      'defaultValue'  => $this->get_download_page_id(),
+      'id'        => apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 )
     );
 
     $hidden_field = \GF_Fields::create( $properties );
@@ -55,7 +56,7 @@ class Modify_Form {
     return $form;
 
   }
-  
+
   /**
    * Insert the title for the current download page as a hidden field
    * into our selected form
@@ -65,8 +66,9 @@ class Modify_Form {
   public function download_title_insert( $form ) {
 
     $properties = array(
-      'type' => 'hidden',
-      'defaultValue' => $this->get_download_page_title()
+      'type'          => 'hidden',
+      'defaultValue'  => $this->get_download_page_title(),
+      'id'            => apply_filters( 'lc_gforms_dm_inserted_title_field_id', 102 )
     );
 
     $hidden_field = \GF_Fields::create( $properties );
@@ -80,7 +82,7 @@ class Modify_Form {
    * Get the ID for the current page where the form
    * is being displayed
    *
-   * @since     0.1.0`
+   * @since     0.1.0
    */
   public function get_download_page_id() {
 
@@ -98,9 +100,9 @@ class Modify_Form {
   public function get_download_page_title() {
 
     $download_page_id = $this->get_download_page_id();
-    $download_page_title = get_the_title( $download_page_id );
+    $download_page_title = urlencode( get_the_title( $download_page_id ) );
 
-    return apply_filters( 'lc_gforms_download_manager_inserted_page_title', $download_page_title );
+    return apply_filters( 'lc_gforms_dm_inserted_page_title', $download_page_title );
 
   }
 
