@@ -16,7 +16,50 @@ class Main {
 
   protected $text_domain = 'lc-gravityforms-download-manager';
 
-  public function __construct() {
+  /**
+   * Pulls everything together for the main class here
+   * and used to instantiate the class for the plugin
+   *
+   * @since     0.1.0
+   */
+  public function run() {
+
+    $this->get_files();
+    $this->setup_hooks();
+    $this->setup_filters();
+
+  }
+
+  /**
+   * Setup all the front-end action hooks used for the plugin
+   *
+   * @since     0.1.0
+   */
+  public function setup_hooks() {
+
+
+  }
+
+  /**
+   * Setup all the front-end filter hooks used for this plugin
+   *
+   * @since     0.1.0
+   */
+  public function setup_filters() {
+
+    add_filter( 'gform_pre_render_1', array( Modify_Form\Modify_Form::instance(), 'download_id_insert' ) );
+    add_filter( 'gform_pre_render_1', array( Modify_Form\Modify_Form::instance(), 'download_title_insert' ) );
+
+  }
+
+  /**
+   * Get all the necessary global and front-end files
+   *
+   * @since     0.1.0
+   */
+  public function get_files() {
+
+    require plugin_dir_path( __FILE__ ) . 'Modify_Form.php';
 
   }
 

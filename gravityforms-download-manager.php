@@ -15,19 +15,30 @@ if( ! defined( 'WPINC' ) ) {
   die;
 }
 
-add_filter( 'gform_pre_render_1', 'download_id_insert' );
 /**
- * Insert the ID for the current download page as a hidden field into our form
+ * Get the main class for the plugin. Where everything is pulled together for
+ * global and front-end elements of the plugin
  */
-function download_id_insert( $form ) {
+require plugin_dir_path( __FILE__ ) . 'includes/Main.php';
 
-  $properties = array(
-    'type' => 'hidden',
-    'defaultValue' => 'my-hidden-field'
-  );
+/**
+ * Begins execution of the plugin.
+ *
+ * Since everything within the plugin is registered via hooks,
+ * then kicking off the plugin from this point in the file does
+ * not affect the page life cycle.
+ *
+ * @since    1.0.0
+ */
+function run_gravityforms_download_manager() {
 
-  $hidden_field = GF_Fields::create( $properties );
-  $form['fields'][] = $hidden_field;
+  // Don't do anything if Gravity Forms isn't activated
+  if( ! class_exists( 'GFForms' ) )
+    return;
 
-  return $form;
+	$plugin = new LC_Gforms_Download_Manager\Main();
+	$plugin->run();
+
 }
+
+run_gravityforms_download_manager();
