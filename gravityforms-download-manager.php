@@ -7,12 +7,29 @@
  * Author:          Josh Mallard
  * Author URI:      http://limecuda.com
  * License:         GPL-2.0+
- * Text Domain:     lc-gform_dm
+ * Text Domain:     lc-gforms_dm
  */
 
 // if this file is called directly, abort.
 if( ! defined( 'WPINC' ) ) {
   die;
+}
+
+add_action( 'gform_loaded', 'lc_gforms_dm_register_gform_addon' );
+/**
+ * Get the Gravity Forms AddOn stuff going
+ *
+ * @since    0.1.0
+ */
+function lc_gforms_dm_register_gform_addon() {
+
+ if ( ! method_exists( 'GFForms', 'include_addon_framework' ) )
+   return;
+
+ require plugin_dir_path( __FILE__ ) . 'includes/GForm_AddOn.php';
+
+ GFAddOn::register( '\LC_Gforms_Download_Manager\GF_AddOn\AddOn' );
+ 
 }
 
 /**
