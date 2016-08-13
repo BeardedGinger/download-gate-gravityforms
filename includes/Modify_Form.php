@@ -15,26 +15,26 @@ namespace LC_Gforms_Download_Manager\Modify_Form;
 class Modify_Form {
 
   /**
-	 * Instance of this class
-	 *
-	 * @since     0.1.0
-	 */
-	protected static $instance;
+   * Instance of this class
+   *
+   * @since     0.1.0
+   */
+  protected static $instance;
 
-	/**
-	 * Used for getting an instance of this class
-	 *
-	 * @since     0.1.0
-	 */
-	public static function instance() {
+  /**
+   * Used for getting an instance of this class
+   *
+   * @since     0.1.0
+   */
+  public static function instance() {
 
-		if ( empty( self::$instance ) ) {
-			self::$instance = new self();
-		}
+  	if ( empty( self::$instance ) ) {
+  		self::$instance = new self();
+  	}
 
-		return self::$instance;
+  	return self::$instance;
 
-	}
+  }
 
   /**
    * Insert the ID for the current download page as a hidden field

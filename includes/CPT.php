@@ -82,7 +82,7 @@ class CPT {
   		'publicly_queryable' 	=> true,
   		'rewrite'             => array( 'slug' => 'download' ),
   		'hierarchical'        => false,
-  		'supports'            => array( 'title', 'editor', 'revisions', 'author', 'thumbnail' )
+  		'supports'            => array( 'title', 'editor', 'revisions', 'thumbnail' )
     );
 
     return apply_filters( 'lc_gforms_dm_cpt_args', $args );
@@ -95,7 +95,9 @@ class CPT {
    * @since     0.1.0
    */
   public function get_cpt_core_class() {
+
     require plugin_dir_path( __FILE__ ) . '../resources/CPT_Core.php';
+    
   }
 
 }
