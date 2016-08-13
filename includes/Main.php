@@ -25,6 +25,9 @@ class Main {
   public function run() {
 
     $this->get_files();
+    
+    CPT\CPT::instance()->register_cpt();
+
     $this->setup_hooks();
     $this->setup_filters();
 
@@ -64,6 +67,7 @@ class Main {
   public function get_files() {
 
     require plugin_dir_path( __FILE__ ) . 'Modify_Form.php';
+    require plugin_dir_path( __FILE__ ) . 'CPT.php';
 
   }
 

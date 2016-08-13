@@ -7,7 +7,7 @@
  * Author:          Josh Mallard
  * Author URI:      http://limecuda.com
  * License:         GPL-2.0+
- * Text Domain:     lc-gravityforms-download-manager
+ * Text Domain:     lc-gform_dm
  */
 
 // if this file is called directly, abort.
@@ -24,11 +24,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/Main.php';
 /**
  * Begins execution of the plugin.
  *
- * Since everything within the plugin is registered via hooks,
- * then kicking off the plugin from this point in the file does
- * not affect the page life cycle.
- *
- * @since    1.0.0
+ * @since    0.1.0
  */
 function run_gravityforms_download_manager() {
 
