@@ -38,6 +38,7 @@ class Download_Single {
    * Append the selected form for accessing downloads
    * to the content of our download posts
    *
+   * @uses      lc_gforms_dm_form_id()
    * @since     0.1.0
    */
   public function append_form( $content ) {
@@ -45,7 +46,7 @@ class Download_Single {
     global $post;
 
     if( $post->post_type == 'lc-gform-downloads' ) {
-      $content .= '[gravityform id="1"]';
+      $content .= '[gravityform id="' . lc_gforms_dm_form_id() . '"]';
     }
 
     return $content;

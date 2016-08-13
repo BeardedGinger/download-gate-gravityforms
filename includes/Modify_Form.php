@@ -137,9 +137,9 @@ class Modify_Form {
    */
   public function save_added_fields( $lead ) {
 
-    $save = \GFFormsModel::save_input( \GFAPI::get_form(1), $this->create_hidden_id(), $lead, \GFFormsModel::get_current_lead(), 101 );
-
+    $save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), \GFAPI::get_form( lc_gforms_dm_form_id() )['fields'][], $lead, \GFFormsModel::get_current_lead(), 101 );
     return $save;
+
   }
 
 }

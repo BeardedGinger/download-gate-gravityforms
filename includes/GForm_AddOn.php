@@ -45,25 +45,25 @@ class AddOn extends \GFAddOn {
   }
 
   /**
-	 * Add a settings page for our plugin
-	 *
-	 * @since     0.1.0
-	 */
+   * Add a settings page for our plugin
+   *
+   * @since     0.1.0
+   */
 	public function plugin_settings_fields() {
 
     $settings = array(
       array(
         'title'  => esc_html__( 'Download Manager Settings', 'lc-gforms_dm' ),
-				'fields' => array(
-					array(
-						'name'              => 'lc_gforms_dm_settings',
-						'tooltip'           => esc_html__( 'The form a visitor will need to complete prior to accessing each downloadable file', 'lc-gforms_dm' ),
-						'label'             => esc_html__( 'Download Access Form', 'lc-gforms_dm' ),
-						'type'              => 'select',
+        'fields' => array(
+          array(
+            'name'              => 'lc_gforms_dm_settings_download_form',
+            'tooltip'           => esc_html__( 'The form a visitor will need to complete prior to accessing each downloadable file', 'lc-gforms_dm' ),
+            'label'             => esc_html__( 'Download Access Form', 'lc-gforms_dm' ),
+            'type'              => 'select',
             'choices'           => $this->forms_select_choices(),
-						'feedback_callback' => array( $this, 'is_valid_setting' ),
-					)
-				)
+            'feedback_callback' => array( $this, 'is_valid_setting' ),
+          )
+        )
       )
     );
 
