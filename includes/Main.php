@@ -25,7 +25,7 @@ class Main {
   public function run() {
 
     $this->get_files();
-    
+
     CPT\CPT::instance()->register_cpt();
 
     $this->setup_hooks();
@@ -41,6 +41,7 @@ class Main {
   public function setup_hooks() {
 
     add_action( 'gform_after_submission_1', array( Modify_Form\Modify_Form::instance(), 'save_added_fields' ) );
+    add_action( 'cmb2_admin_init', array( Upload_Field\Upload_Field::instance(), 'upload_field' ) );
 
   }
 
@@ -57,6 +58,8 @@ class Main {
     add_filter( 'gform_pre_render_1', array( Modify_Form\Modify_Form::instance(), 'download_id_insert' ) );
     add_filter( 'gform_pre_render_1', array( Modify_Form\Modify_Form::instance(), 'download_title_insert' ) );
 
+    add_filter( 'the_content', array( Download_Single\Download_Single::instance(), 'append_form' ) );
+
   }
 
   /**
@@ -66,8 +69,12 @@ class Main {
    */
   public function get_files() {
 
+    require plugin_dir_path( __FILE__ ) . '../resources/CMB2/init.php';
+
     require plugin_dir_path( __FILE__ ) . 'Modify_Form.php';
     require plugin_dir_path( __FILE__ ) . 'CPT.php';
+    require plugin_dir_path( __FILE__ ) . 'Upload_Field.php';
+    require plugin_dir_path( __FILE__ ) . 'Download_Single.php';
 
   }
 

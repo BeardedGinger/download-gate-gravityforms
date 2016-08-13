@@ -78,11 +78,11 @@ class CPT {
   public function cpt_args() {
 
     $args = array(
-  		'menu_icon'           => 'dashicons-download',
-  		'publicly_queryable' 	=> true,
-  		'rewrite'             => array( 'slug' => 'download' ),
-  		'hierarchical'        => false,
-  		'supports'            => array( 'title', 'editor', 'revisions', 'thumbnail' )
+      'menu_icon'           => 'dashicons-download',
+      'publicly_queryable' 	=> true,
+      'rewrite'             => array( 'slug' => 'download' ),
+      'hierarchical'        => false,
+      'supports'            => array( 'title', 'editor', 'revisions', 'thumbnail' )
     );
 
     return apply_filters( 'lc_gforms_dm_cpt_args', $args );
@@ -97,7 +97,7 @@ class CPT {
   public function get_cpt_core_class() {
 
     require plugin_dir_path( __FILE__ ) . '../resources/CPT_Core.php';
-    
+
   }
 
 }
