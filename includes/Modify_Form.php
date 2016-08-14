@@ -130,14 +130,38 @@ class Modify_Form {
   }
 
   /**
-   * Save the values of these added fields to the lead when a
+   * Save the value of the download id when a users
+   * submits the form
+   *
+   * @since    0.1.0
+   */
+  public function save_id_field( $lead ) {
+
+    global $wpdb;
+
+    $lead_detail_table = \GFFormsModel::get_lead_details_table_name();
+    $current_fields = $wpdb->get_results( $wpdb->prepare( "SELECT id, field_number FROM $lead_detail_table WHERE lead_id=%d", $lead['id'] ) );
+
+    $save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, 101 );
+    return $save;
+
+  }
+
+  /**
+   * Save the value of the download title when a
    * user submits the form
    *
    * @since    0.1.0
    */
-  public function save_added_fields( $lead ) {
+  public function save_title_field( $lead ) {
 
-    $save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), \GFAPI::get_form( lc_gforms_dm_form_id() )['fields'][], $lead, \GFFormsModel::get_current_lead(), 101 );
+    global $wpdb;
+
+    $lead_detail_table = \GFFormsModel::get_lead_details_table_name();
+    $current_fields = $wpdb->get_results( $wpdb->prepare( "SELECT id, field_number FROM $lead_detail_table WHERE lead_id=%d", $lead['id'] ) );
+
+    $save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, 102 );
+    
     return $save;
 
   }
