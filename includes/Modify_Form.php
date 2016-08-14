@@ -141,8 +141,9 @@ class Modify_Form {
 
     $lead_detail_table = \GFFormsModel::get_lead_details_table_name();
     $current_fields = $wpdb->get_results( $wpdb->prepare( "SELECT id, field_number FROM $lead_detail_table WHERE lead_id=%d", $lead['id'] ) );
+    $field_id = apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 );
 
-    $save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, 101 );
+    $save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, $field_id );
     return $save;
 
   }
@@ -159,9 +160,10 @@ class Modify_Form {
 
     $lead_detail_table = \GFFormsModel::get_lead_details_table_name();
     $current_fields = $wpdb->get_results( $wpdb->prepare( "SELECT id, field_number FROM $lead_detail_table WHERE lead_id=%d", $lead['id'] ) );
+    $field_id = apply_filters( 'lc_gforms_dm_inserted_title_field_id', 102 );
 
-    $save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, 102 );
-    
+    $save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, $field_id );
+
     return $save;
 
   }

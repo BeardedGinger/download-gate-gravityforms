@@ -42,12 +42,9 @@ class Main {
    */
   public function setup_hooks() {
 
-    //add_action( 'gform_pre_submission_' . lc_gforms_dm_form_id(), array( Modify_Form\Modify_Form::instance(), 'download_id_insert' ) );
-    //add_action( 'gform_pre_submission_' . lc_gforms_dm_form_id(), array( Modify_Form\Modify_Form::instance(), 'download_title_insert' ) );
-
     add_action( 'gform_after_submission_' . lc_gforms_dm_form_id(), array( Modify_Form\Modify_Form::instance(), 'save_id_field' ) );
     add_action( 'gform_after_submission_' . lc_gforms_dm_form_id(), array( Modify_Form\Modify_Form::instance(), 'save_title_field' ) );
-    
+
     add_action( 'cmb2_admin_init', array( Upload_Field\Upload_Field::instance(), 'upload_field' ) );
 
   }

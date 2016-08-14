@@ -32,7 +32,7 @@ function lc_gforms_dm_register_gform_addon() {
 
 /**
  * Putting this here for now to be able to access it more easily
- * throughout the plugin for now
+ * throughout the plugin
  *
  * @since     0.1.0
  */
