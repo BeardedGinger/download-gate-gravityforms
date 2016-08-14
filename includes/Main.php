@@ -61,6 +61,11 @@ class Main {
 
     add_filter( 'the_content', array( Download_Single\Download_Single::instance(), 'append_form' ) );
 
+    add_filter( 'gform_confirmation_' . lc_gforms_dm_form_id(), array( Confirmation\Confirmation::instance(), 'confirmation_download' ), 10, 4 );
+
+    // Enable the confirmation anchor on our form
+    add_filter( 'gform_confirmation_anchor_' . lc_gforms_dm_form_id(), '__return_true' );
+
   }
 
   /**
@@ -76,6 +81,7 @@ class Main {
     require plugin_dir_path( __FILE__ ) . 'CPT.php';
     require plugin_dir_path( __FILE__ ) . 'Upload_Field.php';
     require plugin_dir_path( __FILE__ ) . 'Download_Single.php';
+    require plugin_dir_path( __FILE__ ) . 'Confirmation.php';
 
   }
 
