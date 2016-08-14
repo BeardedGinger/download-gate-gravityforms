@@ -42,7 +42,7 @@ class Admin {
    * @since     0.1.0
    */
   public function setup_filters() {
-
+    add_filter( 'gform_entry_detail_meta_boxes', array( Entry_Details\Entry_Details::instance(), 'download_information_metabox' ), 10, 3 );
   }
 
   /**
@@ -55,5 +55,5 @@ class Admin {
     require plugin_dir_path( __FILE__ ) . 'Entry_Details.php';
 
   }
-  
+
 }

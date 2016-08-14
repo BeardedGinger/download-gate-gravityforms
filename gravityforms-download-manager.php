@@ -41,9 +41,33 @@ function lc_gforms_dm_form_id() {
   return \LC_Gforms_Download_Manager\GF_AddOn\AddOn::get_instance()->get_plugin_setting( 'lc_gforms_dm_settings_download_form' );
 }
 
+if( is_admin() && ( !defined( 'DOING_AJAX' ) || !DOING_AJAX ) ) {
+
+  require plugin_dir_path( __FILE__ ) . 'admin/Admin.php';
+
+  /**
+   * function to execute admin area for our plugin
+   *
+   * @since    0.1.0
+   */
+  function run_gravityforms_download_manager_admin() {
+
+    // Don't do anything if Gravity Forms isn't activated
+    if( ! class_exists( 'GFForms' ) )
+      return;
+
+  	$plugin_admin = new LC_Gforms_Download_Manager\Admin\Admin();
+  	$plugin_admin->run();
+
+  }
+
+  run_gravityforms_download_manager_admin();
+  
+}
+
 /**
- * Get the main class for the plugin. Where everything is pulled together for
- * global and front-end elements of the plugin
+ * Get the main classes for the plugin. Where everything is pulled together for
+ * global, front-end, and admin elements of the plugin
  */
 require plugin_dir_path( __FILE__ ) . 'includes/Main.php';
 
