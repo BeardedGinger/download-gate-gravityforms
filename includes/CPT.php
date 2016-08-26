@@ -82,7 +82,7 @@ class CPT {
       'publicly_queryable' 	=> true,
       'rewrite'             => array( 'slug' => 'download' ),
       'hierarchical'        => false,
-      'supports'            => array( 'title', 'editor', 'revisions', 'thumbnail' )
+      'supports'            => array( 'title', 'editor', 'revisions', 'thumbnail' ),
     );
 
     return apply_filters( 'lc_gforms_dm_cpt_args', $args );

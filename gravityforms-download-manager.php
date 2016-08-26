@@ -8,10 +8,12 @@
  * Author URI:      http://limecuda.com
  * License:         GPL-2.0+
  * Text Domain:     lc-gforms_dm
+ *
+ * @package gravityforms-download-manager
  */
 
-// if this file is called directly, abort.
-if( ! defined( 'WPINC' ) ) {
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
   die;
 }
 
@@ -23,10 +25,10 @@ add_action( 'gform_loaded', 'lc_gforms_dm_register_gform_addon' );
  */
 function lc_gforms_dm_register_gform_addon() {
 
- if ( ! method_exists( 'GFForms', 'include_addon_framework' ) )
-   return;
+  if ( ! method_exists( 'GFForms', 'include_addon_framework' ) )
+    return;
 
- GFAddOn::register( '\LC_Gforms_Download_Manager\GF_AddOn\AddOn' );
+  GFAddOn::register( '\LC_Gforms_Download_Manager\GF_AddOn\AddOn' );
 
 }
 
@@ -41,7 +43,7 @@ function lc_gforms_dm_form_id() {
   return \LC_Gforms_Download_Manager\GF_AddOn\AddOn::get_instance()->get_plugin_setting( 'lc_gforms_dm_settings_download_form' );
 }
 
-if( is_admin() && ( !defined( 'DOING_AJAX' ) || !DOING_AJAX ) ) {
+if ( is_admin() && ( !defined( 'DOING_AJAX' ) || !DOING_AJAX ) ) {
 
   require plugin_dir_path( __FILE__ ) . 'admin/Admin.php';
 
@@ -62,7 +64,7 @@ if( is_admin() && ( !defined( 'DOING_AJAX' ) || !DOING_AJAX ) ) {
   }
 
   run_gravityforms_download_manager_admin();
-  
+
 }
 
 /**
