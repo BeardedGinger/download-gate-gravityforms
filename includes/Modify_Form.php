@@ -5,12 +5,12 @@
  * their form
  *
  * @since       0.1.0
- * @package     gravityforms-download-manager
- * @subpackage  gravityforms-download-manager/includes
+ * @package     download-gate-gravityforms
+ * @subpackage  download-gate-gravityforms/includes
  * @author      Josh Mallard <josh@limecuda.com>
  */
 
-namespace LC_Gforms_Download_Manager\Modify_Form;
+namespace LC_Gforms_Download_Gate\Modify_Form;
 
 class Modify_Form {
 

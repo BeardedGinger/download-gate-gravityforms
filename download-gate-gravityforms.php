@@ -9,7 +9,7 @@
  * License:         GPL-2.0+
  * Text Domain:     lc-gforms_dm
  *
- * @package gravityforms-download-manager
+ * @package download-gate-gravityforms
  */
 
 // If this file is called directly, abort.

@@ -3,12 +3,12 @@
  * The main file for the plugin, including all hooks and filters
  *
  * @since       0.1.0
- * @package     gravityforms-download-manager
- * @subpackage  gravityforms-download-manager/includes
+ * @package     download-gate-gravityforms
+ * @subpackage  download-gate-gravityforms/includes
  * @author      Josh Mallard <josh@limecuda.com>
  */
 
-namespace LC_Gforms_Download_Manager;
+namespace LC_Gforms_Download_Gate;
 
 class Main {
 

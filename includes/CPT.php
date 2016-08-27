@@ -3,12 +3,12 @@
  * The CPT to manage our downloads
  *
  * @since       0.1.0
- * @package     gravityforms-download-manager
- * @subpackage  gravityforms-download-manager/includes
+ * @package     download-gate-gravityforms
+ * @subpackage  download-gate-gravityforms/includes
  * @author      Josh Mallard <josh@limecuda.com>
  */
 
-namespace LC_Gforms_Download_Manager\CPT;
+namespace LC_Gforms_Download_Gate\CPT;
 
 class CPT {
 

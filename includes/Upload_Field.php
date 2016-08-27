@@ -5,12 +5,12 @@
  *
  * @link        https://github.com/WebDevStudios/CMB2
  * @since       0.1.0
- * @package     gravityforms-download-manager
- * @subpackage  gravityforms-download-manager/includes
+ * @package     download-gate-gravityforms
+ * @subpackage  download-gate-gravityforms/includes
  * @author      Josh Mallard <josh@limecuda.com>
  */
 
-namespace LC_Gforms_Download_Manager\Upload_Field;
+namespace LC_Gforms_Download_Gate\Upload_Field;
 
 class Upload_Field {
 

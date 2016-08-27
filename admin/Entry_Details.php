@@ -4,12 +4,12 @@
  * include the additional meta about the download driving the entry
  *
  * @since       0.1.0
- * @package     gravityforms-download-manager
- * @subpackage  gravityforms-download-manager/apache_child_terminate
+ * @package     download-gate-gravityforms
+ * @subpackage  download-gate-gravityforms/apache_child_terminate
  * @author      Josh Mallard <josh@limecuda.com>
  */
 
-namespace LC_Gforms_Download_Manager\Admin\Entry_Details;
+namespace LC_Gforms_Download_Gate\Admin\Entry_Details;
 
 class Entry_Details {
 
