@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:     Resource Gate for Gravity Forms
+ * Plugin Name:     Download Gate for Gravity Forms
  * Plugin URI:      http://limecuda.com
- * Description:     Works with Gravity Forms plugin to allow visitors to download files after submitting a gravity form
+ * Description:     Works with Gravity Forms to allow visitors to download files after submitting a gravity form
  * Version:         0.1.0
  * Author:          Josh Mallard
  * Author URI:      http://limecuda.com
