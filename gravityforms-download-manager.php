@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     Download Manager for Gravity Forms
+ * Plugin Name:     Resource Gate for Gravity Forms
  * Plugin URI:      http://limecuda.com
  * Description:     Works with Gravity Forms plugin to allow visitors to download files after submitting a gravity form
  * Version:         0.1.0
@@ -14,7 +14,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-  die;
+	die;
 }
 
 add_action( 'gform_loaded', 'lc_gforms_dm_register_gform_addon' );
@@ -25,10 +25,10 @@ add_action( 'gform_loaded', 'lc_gforms_dm_register_gform_addon' );
  */
 function lc_gforms_dm_register_gform_addon() {
 
-  if ( ! method_exists( 'GFForms', 'include_addon_framework' ) )
-    return;
+	if ( ! method_exists( 'GFForms', 'include_addon_framework' ) )
+		return;
 
-  GFAddOn::register( '\LC_Gforms_Download_Manager\GF_AddOn\AddOn' );
+	GFAddOn::register( '\LC_Gforms_Download_Manager\GF_AddOn\AddOn' );
 
 }
 
@@ -39,31 +39,31 @@ function lc_gforms_dm_register_gform_addon() {
  * @since     0.1.0
  */
 function lc_gforms_dm_form_id() {
-  require_once plugin_dir_path( __FILE__ ) . 'includes/GForm_AddOn.php';
-  return \LC_Gforms_Download_Manager\GF_AddOn\AddOn::get_instance()->get_plugin_setting( 'lc_gforms_dm_settings_download_form' );
+	require_once plugin_dir_path( __FILE__ ) . 'includes/GForm_AddOn.php';
+	return \LC_Gforms_Download_Manager\GF_AddOn\AddOn::get_instance()->get_plugin_setting( 'lc_gforms_dm_settings_download_form' );
 }
 
-if ( is_admin() && ( !defined( 'DOING_AJAX' ) || !DOING_AJAX ) ) {
+if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 
-  require plugin_dir_path( __FILE__ ) . 'admin/Admin.php';
+	require plugin_dir_path( __FILE__ ) . 'admin/Admin.php';
 
-  /**
-   * function to execute admin area for our plugin
-   *
-   * @since    0.1.0
-   */
-  function run_gravityforms_download_manager_admin() {
+	/**
+	 * Function to execute admin area for our plugin
+	 *
+	 * @since    0.1.0
+	 */
+	function run_gravityforms_download_manager_admin() {
 
-    // Don't do anything if Gravity Forms isn't activated
-    if( ! class_exists( 'GFForms' ) )
-      return;
+		// Don't do anything if Gravity Forms isn't activated.
+		if ( ! class_exists( 'GFForms' ) )
+		  return;
 
-  	$plugin_admin = new LC_Gforms_Download_Manager\Admin\Admin();
-  	$plugin_admin->run();
+		$plugin_admin = new LC_Gforms_Download_Manager\Admin\Admin();
+		$plugin_admin->run();
 
-  }
+	}
 
-  run_gravityforms_download_manager_admin();
+	run_gravityforms_download_manager_admin();
 
 }
 
@@ -80,9 +80,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/Main.php';
  */
 function run_gravityforms_download_manager() {
 
-  // Don't do anything if Gravity Forms isn't activated
-  if( ! class_exists( 'GFForms' ) )
-    return;
+	// Don't do anything if Gravity Forms isn't activated.
+	if ( ! class_exists( 'GFForms' ) )
+		return;
 
 	$plugin = new LC_Gforms_Download_Manager\Main();
 	$plugin->run();

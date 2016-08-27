@@ -1,3 +1,6 @@
 [submodule "resources/CMB2"]
 	path = resources/CMB2
 	url = https://github.com/WebDevStudios/CMB2.git
+[submodule "resources/CPT_Core"]
+	path = resources/CPT_Core
+	url = https://github.com/WebDevStudios/CPT_Core.git
