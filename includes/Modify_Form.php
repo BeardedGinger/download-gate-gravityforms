@@ -14,158 +14,162 @@ namespace LC_Gforms_Download_Manager\Modify_Form;
 
 class Modify_Form {
 
-  /**
-   * Instance of this class
-   *
-   * @since     0.1.0
-   */
-  protected static $instance;
+	/**
+	 * Instance of this class
+	 *
+	 * @since     0.1.0
+	 * @var       $instance
+	 */
+	protected static $instance;
 
-  /**
-   * Used for getting an instance of this class
-   *
-   * @since     0.1.0
-   */
-  public static function instance() {
+	/**
+	 * Used for getting an instance of this class
+	 *
+	 * @since     0.1.0
+	 */
+	public static function instance() {
 
-  	if ( empty( self::$instance ) ) {
-  		self::$instance = new self();
-  	}
+		if ( empty( self::$instance ) ) {
+			self::$instance = new self();
+		}
 
-  	return self::$instance;
+		return self::$instance;
 
-  }
+	}
 
-  /**
-   * Insert the ID for the current download page as a hidden field
-   * into our selected form
-   *
-   * @since     0.1.0
-   */
-  public function download_id_insert( $form ) {
+	/**
+	 * Insert the ID for the current download page as a hidden field
+	 * into our selected form
+	 *
+	 * @since     0.1.0
+	 * @param     object $form The current form.
+	 */
+	public function download_id_insert( $form ) {
 
-    $form['fields'][] = $this->create_hidden_id();
+		$form['fields'][] = $this->create_hidden_id();
 
-    return $form;
+		return $form;
 
-  }
+	}
 
-  /**
-   * Insert the title for the current download page as a hidden field
-   * into our selected form
-   *
-   * @since     0.1.0
-   */
-  public function download_title_insert( $form ) {
+	/**
+	 * Insert the title for the current download page as a hidden field
+	 * into our selected form
+	 *
+	 * @since     0.1.0
+	 * @param     object $form The current form.
+	 */
+	public function download_title_insert( $form ) {
 
-    $form['fields'][] = $this->create_hidden_title();
+		$form['fields'][] = $this->create_hidden_title();
 
-    return $form;
+		return $form;
 
-  }
+	}
 
-  /**
-   * Create hidden id field
-   *
-   * @since     0.1.0
-   */
-  public function create_hidden_id() {
+	/**
+	 * Create hidden id field
+	 *
+	 * @since     0.1.0
+	 */
+	public function create_hidden_id() {
 
-    $properties = array(
-      'type'          => 'hidden',
-      'defaultValue'  => $this->get_download_page_id(),
-      'id'            => apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 )
-    );
+		$properties = array(
+		  'type'          => 'hidden',
+		  'defaultValue'  => $this->get_download_page_id(),
+		  'id'            => apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 ),
+		);
 
-    $hidden_field = \GF_Fields::create( $properties );
+		$hidden_field = \GF_Fields::create( $properties );
 
-    return $hidden_field;
+		return $hidden_field;
 
-  }
+	}
 
-  /**
-   * Create hidden title field
-   *
-   * @since     0.1.0
-   */
-  public function create_hidden_title() {
+	/**
+	 * Create hidden title field
+	 *
+	 * @since     0.1.0
+	 */
+	public function create_hidden_title() {
 
-    $properties = array(
-      'type'          => 'hidden',
-      'defaultValue'  => $this->get_download_page_title(),
-      'id'            => apply_filters( 'lc_gforms_dm_inserted_title_field_id', 102 )
-    );
+		$properties = array(
+		  'type'          => 'hidden',
+		  'defaultValue'  => $this->get_download_page_title(),
+		  'id'            => apply_filters( 'lc_gforms_dm_inserted_title_field_id', 102 ),
+		);
 
-    $hidden_field = \GF_Fields::create( $properties );
+		$hidden_field = \GF_Fields::create( $properties );
 
-    return $hidden_field;
-  }
+		return $hidden_field;
+	}
 
-  /**
-   * Get the ID for the current page where the form
-   * is being displayed
-   *
-   * @since     0.1.0
-   */
-  public function get_download_page_id() {
+	/**
+	 * Get the ID for the current page where the form
+	 * is being displayed
+	 *
+	 * @since     0.1.0
+	 */
+	public function get_download_page_id() {
 
-    global $post;
-    return $post->ID;
+		global $post;
+		return $post->ID;
 
-  }
+	}
 
-  /**
-   * Get the page title for the current page where the form
-   * is being displayed
-   *
-   * @since     0.1.0
-   */
-  public function get_download_page_title() {
+	/**
+	 * Get the page title for the current page where the form
+	 * is being displayed
+	 *
+	 * @since     0.1.0
+	 */
+	public function get_download_page_title() {
 
-    $download_page_id = $this->get_download_page_id();
-    $download_page_title = urlencode( get_the_title( $download_page_id ) );
+		$download_page_id = $this->get_download_page_id();
+		$download_page_title = urlencode( get_the_title( $download_page_id ) );
 
-    return apply_filters( 'lc_gforms_dm_inserted_page_title', $download_page_title );
+		return apply_filters( 'lc_gforms_dm_inserted_page_title', $download_page_title );
 
-  }
+	}
 
-  /**
-   * Save the value of the download id when a users
-   * submits the form
-   *
-   * @since    0.1.0
-   */
-  public function save_id_field( $lead ) {
+	/**
+	 * Save the value of the download id when a users
+	 * submits the form
+	 *
+	 * @since    0.1.0
+	 * @param    object $lead   The current submission of the form.
+	 */
+	public function save_id_field( $lead ) {
 
-    global $wpdb;
+		global $wpdb;
 
-    $lead_detail_table = \GFFormsModel::get_lead_details_table_name();
-    $current_fields = $wpdb->get_results( $wpdb->prepare( "SELECT id, field_number FROM $lead_detail_table WHERE lead_id=%d", $lead['id'] ) );
-    $field_id = apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 );
+		$lead_detail_table = \GFFormsModel::get_lead_details_table_name();
+		$current_fields = $wpdb->get_results( $wpdb->prepare( "SELECT id, field_number FROM $lead_detail_table WHERE lead_id=%d", $lead['id'] ) );
+		$field_id = apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 );
 
-    $save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, $field_id );
-    return $save;
+		$save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, $field_id );
+		return $save;
 
-  }
+	}
 
-  /**
-   * Save the value of the download title when a
-   * user submits the form
-   *
-   * @since    0.1.0
-   */
-  public function save_title_field( $lead ) {
+	/**
+	 * Save the value of the download title when a
+	 * user submits the form
+	 *
+	 * @since    0.1.0
+	 * @param    object $lead   The current submission of the form.
+	 */
+	public function save_title_field( $lead ) {
 
-    global $wpdb;
+		global $wpdb;
 
-    $lead_detail_table = \GFFormsModel::get_lead_details_table_name();
-    $current_fields = $wpdb->get_results( $wpdb->prepare( "SELECT id, field_number FROM $lead_detail_table WHERE lead_id=%d", $lead['id'] ) );
-    $field_id = apply_filters( 'lc_gforms_dm_inserted_title_field_id', 102 );
+		$lead_detail_table = \GFFormsModel::get_lead_details_table_name();
+		$current_fields = $wpdb->get_results( $wpdb->prepare( "SELECT id, field_number FROM $lead_detail_table WHERE lead_id=%d", $lead['id'] ) );
+		$field_id = apply_filters( 'lc_gforms_dm_inserted_title_field_id', 102 );
 
-    $save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, $field_id );
+		$save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, $field_id );
 
-    return $save;
+		return $save;
 
-  }
-
+	}
 }

@@ -12,45 +12,46 @@ namespace LC_Gforms_Download_Manager\Download_Single;
 
 class Download_Single {
 
-  /**
-   * Instance of this class
-   *
-   * @since     0.1.0
-   */
-  protected static $instance;
+	/**
+	 * Instance of this class
+	 *
+	 * @since     0.1.0
+	 * @var       $instance
+	 */
+	protected static $instance;
 
-  /**
-   * Used for getting an instance of this class
-   *
-   * @since     0.1.0
-   */
-  public static function instance() {
+	/**
+	 * Used for getting an instance of this class
+	 *
+	 * @since     0.1.0
+	 */
+	public static function instance() {
 
-    if ( empty( self::$instance ) ) {
-      self::$instance = new self();
-    }
+		if ( empty( self::$instance ) ) {
+			self::$instance = new self();
+ 		}
 
-    return self::$instance;
+		return self::$instance;
 
-  }
+	}
 
-  /**
-   * Append the selected form for accessing downloads
-   * to the content of our download posts
-   *
-   * @uses      lc_gforms_dm_form_id()
-   * @since     0.1.0
-   */
-  public function append_form( $content ) {
+	/**
+	 * Append the selected form for accessing downloads
+ 	 * to the content of our download posts
+	 *
+	 * @since     0.1.0
+	 * @uses      lc_gforms_dm_form_id()
+	 * @param     string $content     The post content.
+	 */
+	public function append_form( $content ) {
 
-    global $post;
+		global $post;
 
-    if( $post->post_type == 'lc-gform-downloads' ) {
-      $content .= '[gravityform id="' . lc_gforms_dm_form_id() . '"]';
-    }
+		if ( 'lc-gform-downloads' === $post->post_type ) {
+			$content .= '[gravityform id="' . lc_gforms_dm_form_id() . '"]';
+		}
 
-    return $content;
+		return $content;
 
-  }
-
+	}
 }
