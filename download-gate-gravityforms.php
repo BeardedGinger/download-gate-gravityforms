@@ -28,7 +28,7 @@ function lc_gforms_dm_register_gform_addon() {
 	if ( ! method_exists( 'GFForms', 'include_addon_framework' ) )
 		return;
 
-	GFAddOn::register( '\LC_Gforms_Download_Manager\GF_AddOn\AddOn' );
+	GFAddOn::register( '\LC_Gforms_Download_Gate\GF_AddOn\AddOn' );
 
 }
 
@@ -40,7 +40,7 @@ function lc_gforms_dm_register_gform_addon() {
  */
 function lc_gforms_dm_form_id() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/GForm_AddOn.php';
-	return \LC_Gforms_Download_Manager\GF_AddOn\AddOn::get_instance()->get_plugin_setting( 'lc_gforms_dm_settings_download_form' );
+	return \LC_Gforms_Download_Gate\GF_AddOn\AddOn::get_instance()->get_plugin_setting( 'lc_gforms_dm_settings_download_form' );
 }
 
 if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
@@ -52,18 +52,18 @@ if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 	 *
 	 * @since    0.1.0
 	 */
-	function run_gravityforms_download_manager_admin() {
+	function run_gravityforms_download_gate_admin() {
 
 		// Don't do anything if Gravity Forms isn't activated.
 		if ( ! class_exists( 'GFForms' ) )
 		  return;
 
-		$plugin_admin = new LC_Gforms_Download_Manager\Admin\Admin();
+		$plugin_admin = new LC_Gforms_Download_Gate\Admin\Admin();
 		$plugin_admin->run();
 
 	}
 
-	run_gravityforms_download_manager_admin();
+	run_gravityforms_download_gate_admin();
 
 }
 
@@ -78,15 +78,15 @@ require plugin_dir_path( __FILE__ ) . 'includes/Main.php';
  *
  * @since    0.1.0
  */
-function run_gravityforms_download_manager() {
+function run_gravityforms_download_gate() {
 
 	// Don't do anything if Gravity Forms isn't activated.
 	if ( ! class_exists( 'GFForms' ) )
 		return;
 
-	$plugin = new LC_Gforms_Download_Manager\Main();
+	$plugin = new LC_Gforms_Download_Gate\Main();
 	$plugin->run();
 
 }
 
-run_gravityforms_download_manager();
+run_gravityforms_download_gate();

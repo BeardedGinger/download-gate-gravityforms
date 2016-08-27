@@ -51,7 +51,7 @@ class Confirmation {
 
 		$download_file = get_post_meta( get_the_ID(), 'lc_gform_dm_upload_file', true );
 
-		echo esc_html( $confirmation );
+		echo wp_kses_post( $confirmation );
 		echo '<a href="' . esc_url( $download_file ) . '" class="button lc-gforms-dm-button"><i class="fa fa-download"></i> Download ' . get_the_title() . '</a>';
 
 		return ob_get_clean();
