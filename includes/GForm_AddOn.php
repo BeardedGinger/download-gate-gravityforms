@@ -16,10 +16,10 @@ class AddOn extends \GFAddOn {
 
 	protected $_version = '0.1.0';
 	protected $_min_gravityforms_version = '1.9';
-	protected $_slug = 'gravityforms-download-manager';
-	protected $_path = 'gravityforms-download-manager/includes/GForm_AddOn.php';
+	protected $_slug = 'download-gate-gravityforms';
+	protected $_path = 'download-gate-gravityforms/includes/GForm_AddOn.php';
 	protected $_full_path = __FILE__;
-	protected $_title = 'Download Manager for Gravity Forms';
+	protected $_title = 'Download Gate for Gravity Forms';
 	protected $_short_title = 'Downloads';
 
 	/**
@@ -54,12 +54,12 @@ class AddOn extends \GFAddOn {
 
 		$settings = array(
 			array(
-				'title'  => esc_html__( 'Download Manager Settings', 'lc-gforms_dm' ),
+				'title'  => esc_html__( 'Download Gate Settings', 'lc-gforms_dg' ),
 				'fields' => array(
 					array(
-						'name'              => 'lc_gforms_dm_settings_download_form',
-						'tooltip'           => esc_html__( 'The form a visitor will need to complete prior to accessing each downloadable file', 'lc-gforms_dm' ),
-						'label'             => esc_html__( 'Download Access Form', 'lc-gforms_dm' ),
+						'name'              => 'lc_gforms_dg_settings_download_form',
+						'tooltip'           => esc_html__( 'The form a visitor will need to complete prior to accessing each downloadable file', 'lc-gforms_dg' ),
+						'label'             => esc_html__( 'Download Access Form', 'lc-gforms_dg' ),
 						'type'              => 'select',
 						'choices'           => $this->forms_select_choices(),
 						'feedback_callback' => array( $this, 'is_valid_setting' ),
@@ -68,7 +68,7 @@ class AddOn extends \GFAddOn {
 			),
 		);
 
-		return apply_filters( 'lc_gforms_dm_settings', $settings );
+		return apply_filters( 'lc_gforms_dg_settings', $settings );
 
 	}
 
@@ -90,7 +90,7 @@ class AddOn extends \GFAddOn {
 			$count++;
 		}
 
-		return apply_filters( 'lc_gforms_dm_form_choices_array', $form_choices );
+		return apply_filters( 'lc_gforms_dg_form_choices_array', $form_choices );
 
 	}
 }

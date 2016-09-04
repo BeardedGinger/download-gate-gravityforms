@@ -48,12 +48,12 @@ class Entry_Details {
 	 */
 	public function download_information_metabox( $meta_boxes, $entry, $form ) {
 
-		$download_id_field_id = apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 );
-		$download_title_field_id = apply_filters( 'lc_gforms_dm_inserted_title_field_id', 102 );
+		$download_id_field_id = apply_filters( 'lc_gforms_dg_inserted_id_field_id', 101 );
+		$download_title_field_id = apply_filters( 'lc_gforms_dg_inserted_title_field_id', 102 );
 
 		if ( array_key_exists( $download_id_field_id, $entry ) && array_key_exists( $download_title_field_id, $entry ) ) {
-			$meta_boxes['lc_gforms_dm_details'] = array(
-	        'title'    => __( 'Download Information', 'lc_gforms_dm' ),
+			$meta_boxes['lc_gforms_dg_details'] = array(
+	        'title'    => __( 'Download Information', 'lc_gforms_dg' ),
 	        'callback' => array( $this, 'download_metabox_callback' ),
 	        'context'  => 'side',
 	        'priority' => 'high',
@@ -72,8 +72,8 @@ class Entry_Details {
 	 */
 	public function download_metabox_callback( $args ) {
 
-		$download_id_field_id = apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 );
-		$download_title_field_id = apply_filters( 'lc_gforms_dm_inserted_title_field_id', 102 );
+		$download_id_field_id = apply_filters( 'lc_gforms_dg_inserted_id_field_id', 101 );
+		$download_title_field_id = apply_filters( 'lc_gforms_dg_inserted_title_field_id', 102 );
 
 		echo '<strong>Associated Download</strong><br>';
 		echo '<a target="_blank" href="' . esc_url( get_permalink( $args['entry'][ $download_id_field_id ] ) ) . '">' . esc_attr( urldecode( $args['entry'][ $download_title_field_id ] ) ) . '</a>';

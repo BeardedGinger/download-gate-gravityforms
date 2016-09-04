@@ -77,7 +77,7 @@ class Modify_Form {
 		$properties = array(
 		  'type'          => 'hidden',
 		  'defaultValue'  => $this->get_download_page_id(),
-		  'id'            => apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 ),
+		  'id'            => apply_filters( 'lc_gforms_dg_inserted_id_field_id', 101 ),
 		);
 
 		$hidden_field = \GF_Fields::create( $properties );
@@ -96,7 +96,7 @@ class Modify_Form {
 		$properties = array(
 		  'type'          => 'hidden',
 		  'defaultValue'  => $this->get_download_page_title(),
-		  'id'            => apply_filters( 'lc_gforms_dm_inserted_title_field_id', 102 ),
+		  'id'            => apply_filters( 'lc_gforms_dg_inserted_title_field_id', 102 ),
 		);
 
 		$hidden_field = \GF_Fields::create( $properties );
@@ -128,7 +128,7 @@ class Modify_Form {
 		$download_page_id = $this->get_download_page_id();
 		$download_page_title = urlencode( get_the_title( $download_page_id ) );
 
-		return apply_filters( 'lc_gforms_dm_inserted_page_title', $download_page_title );
+		return apply_filters( 'lc_gforms_dg_inserted_page_title', $download_page_title );
 
 	}
 
@@ -145,9 +145,9 @@ class Modify_Form {
 
 		$lead_detail_table = \GFFormsModel::get_lead_details_table_name();
 		$current_fields = $wpdb->get_results( $wpdb->prepare( "SELECT id, field_number FROM $lead_detail_table WHERE lead_id=%d", $lead['id'] ) );
-		$field_id = apply_filters( 'lc_gforms_dm_inserted_id_field_id', 101 );
+		$field_id = apply_filters( 'lc_gforms_dg_inserted_id_field_id', 101 );
 
-		$save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, $field_id );
+		$save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dg_form_id() ), $this->create_hidden_id(), $lead, $current_fields, $field_id );
 		return $save;
 
 	}
@@ -165,9 +165,9 @@ class Modify_Form {
 
 		$lead_detail_table = \GFFormsModel::get_lead_details_table_name();
 		$current_fields = $wpdb->get_results( $wpdb->prepare( "SELECT id, field_number FROM $lead_detail_table WHERE lead_id=%d", $lead['id'] ) );
-		$field_id = apply_filters( 'lc_gforms_dm_inserted_title_field_id', 102 );
+		$field_id = apply_filters( 'lc_gforms_dg_inserted_title_field_id', 102 );
 
-		$save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dm_form_id() ), $this->create_hidden_id(), $lead, $current_fields, $field_id );
+		$save = \GFFormsModel::save_input( \GFAPI::get_form( lc_gforms_dg_form_id() ), $this->create_hidden_id(), $lead, $current_fields, $field_id );
 
 		return $save;
 

@@ -57,14 +57,14 @@ class Upload_Field {
 	public function create_upload_metabox() {
 
 		$upload_metabox = new_cmb2_box( array(
-			'id'            => 'lc_gform_dm_upload_file_metabox',
-			'title'         => __( 'Downloadable File', 'lc-gform_dm' ),
-			'object_types'  => array( 'lc-gform-downloads' ),
+			'id'            => 'lc_gform_dg_upload_file_metabox',
+			'title'         => __( 'Downloadable File', 'lc-gform_dg' ),
+			'object_types'  => array( 'lc-gform-download' ),
 			'context'    => 'normal',
 			'priority'   => 'high',
 		) );
 
-		return apply_filters( 'lc_gform_dm_upload_file_metabox', $upload_metabox );
+		return apply_filters( 'lc_gform_dg_upload_file_metabox', $upload_metabox );
 
 	}
 
@@ -76,9 +76,9 @@ class Upload_Field {
 	public function create_upload_field() {
 
 		$this->create_upload_metabox()->add_field( array(
-			'name' => __( 'File', 'lc-gform_dm' ),
-			'desc' => __( 'Upload the file that will be available for download once the user completes your selected form', 'lc-gform_dm' ),
-			'id'   => 'lc_gform_dm_upload_file',
+			'name' => __( 'File', 'lc-gform_dg' ),
+			'desc' => __( 'Upload the file that will be available for download once the user completes your selected form', 'lc-gform_dg' ),
+			'id'   => 'lc_gform_dg_upload_file',
 			'type' => 'file',
 		) );
 

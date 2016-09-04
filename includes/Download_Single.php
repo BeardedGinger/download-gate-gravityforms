@@ -29,7 +29,7 @@ class Download_Single {
 
 		if ( empty( self::$instance ) ) {
 			self::$instance = new self();
- 		}
+		}
 
 		return self::$instance;
 
@@ -37,18 +37,18 @@ class Download_Single {
 
 	/**
 	 * Append the selected form for accessing downloads
- 	 * to the content of our download posts
+	 * to the content of our download posts.
 	 *
 	 * @since     0.1.0
-	 * @uses      lc_gforms_dm_form_id()
+	 * @uses      lc_gforms_dg_form_id()
 	 * @param     string $content     The post content.
 	 */
 	public function append_form( $content ) {
 
 		global $post;
 
-		if ( 'lc-gform-downloads' === $post->post_type ) {
-			$content .= '[gravityform id="' . lc_gforms_dm_form_id() . '"]';
+		if ( 'lc-gform-download' === $post->post_type ) {
+			$content .= '[gravityform id="' . lc_gforms_dg_form_id() . '"]';
 		}
 
 		return $content;

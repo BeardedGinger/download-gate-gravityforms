@@ -61,12 +61,12 @@ class CPT {
 	public function cpt_name() {
 
 		$args = array(
-			__( 'Download', 'lc-gform_dm' ),
-			__( 'Downloads', 'lc-gform_dm' ),
-			'lc-gform-downloads',
+			__( 'Download', 'lc-gform_dg' ),
+			__( 'Downloads', 'lc-gform_dg' ),
+			'lc-gform-download',
 		);
 
-		return apply_filters( 'lc_gforms_dm_cpt_name', $args );
+		return apply_filters( 'lc_gforms_dg_cpt_name', $args );
 
 	}
 
@@ -86,7 +86,7 @@ class CPT {
 			'supports'            => array( 'title', 'editor', 'revisions', 'thumbnail' ),
 		);
 
-		return apply_filters( 'lc_gforms_dm_cpt_args', $args );
+		return apply_filters( 'lc_gforms_dg_cpt_args', $args );
 
 	}
 

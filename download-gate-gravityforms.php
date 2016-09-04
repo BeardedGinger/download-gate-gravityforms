@@ -7,7 +7,7 @@
  * Author:          Josh Mallard
  * Author URI:      http://limecuda.com
  * License:         GPL-2.0+
- * Text Domain:     lc-gforms_dm
+ * Text Domain:     lc-gforms_dg
  *
  * @package download-gate-gravityforms
  */
@@ -17,13 +17,13 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-add_action( 'gform_loaded', 'lc_gforms_dm_register_gform_addon' );
+add_action( 'gform_loaded', 'lc_gforms_dg_register_gform_addon' );
 /**
  * Get the Gravity Forms AddOn stuff going
  *
  * @since    0.1.0
  */
-function lc_gforms_dm_register_gform_addon() {
+function lc_gforms_dg_register_gform_addon() {
 
 	if ( ! method_exists( 'GFForms', 'include_addon_framework' ) )
 		return;
@@ -38,9 +38,9 @@ function lc_gforms_dm_register_gform_addon() {
  *
  * @since     0.1.0
  */
-function lc_gforms_dm_form_id() {
+function lc_gforms_dg_form_id() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/GForm_AddOn.php';
-	return \LC_Gforms_Download_Gate\GF_AddOn\AddOn::get_instance()->get_plugin_setting( 'lc_gforms_dm_settings_download_form' );
+	return \LC_Gforms_Download_Gate\GF_AddOn\AddOn::get_instance()->get_plugin_setting( 'lc_gforms_dg_settings_download_form' );
 }
 
 if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {

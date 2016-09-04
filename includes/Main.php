@@ -26,7 +26,7 @@ class Main {
 	 * @since    0.1.0
 	 * @var      string $text_domain
 	 */
-	protected $text_domain = 'lc-gravityforms-download-manager';
+	protected $text_domain = 'lc-gforms_dg';
 
 	/**
 	 * Pulls everything together for the main class here
@@ -52,8 +52,8 @@ class Main {
 	 */
 	public function setup_hooks() {
 
-		add_action( 'gform_after_submission_' . lc_gforms_dm_form_id(), array( Modify_Form\Modify_Form::instance(), 'save_id_field' ) );
-		add_action( 'gform_after_submission_' . lc_gforms_dm_form_id(), array( Modify_Form\Modify_Form::instance(), 'save_title_field' ) );
+		add_action( 'gform_after_submission_' . lc_gforms_dg_form_id(), array( Modify_Form\Modify_Form::instance(), 'save_id_field' ) );
+		add_action( 'gform_after_submission_' . lc_gforms_dg_form_id(), array( Modify_Form\Modify_Form::instance(), 'save_title_field' ) );
 
 		add_action( 'cmb2_admin_init', array( Upload_Field\Upload_Field::instance(), 'upload_field' ) );
 
@@ -66,15 +66,15 @@ class Main {
 	 */
 	public function setup_filters() {
 
-		add_filter( 'gform_pre_render_' . lc_gforms_dm_form_id(), array( Modify_Form\Modify_Form::instance(), 'download_id_insert' ) );
-		add_filter( 'gform_pre_render_' . lc_gforms_dm_form_id(), array( Modify_Form\Modify_Form::instance(), 'download_title_insert' ) );
+		add_filter( 'gform_pre_render_' . lc_gforms_dg_form_id(), array( Modify_Form\Modify_Form::instance(), 'download_id_insert' ) );
+		add_filter( 'gform_pre_render_' . lc_gforms_dg_form_id(), array( Modify_Form\Modify_Form::instance(), 'download_title_insert' ) );
 
 		add_filter( 'the_content', array( Download_Single\Download_Single::instance(), 'append_form' ) );
 
-		add_filter( 'gform_confirmation_' . lc_gforms_dm_form_id(), array( Confirmation\Confirmation::instance(), 'confirmation_download' ), 10, 4 );
+		add_filter( 'gform_confirmation_' . lc_gforms_dg_form_id(), array( Confirmation\Confirmation::instance(), 'confirmation_download' ), 10, 4 );
 
 		// Enable the confirmation anchor on our form.
-		add_filter( 'gform_confirmation_anchor_' . lc_gforms_dm_form_id(), '__return_true' );
+		add_filter( 'gform_confirmation_anchor_' . lc_gforms_dg_form_id(), '__return_true' );
 
 	}
 
